@@ -122,6 +122,7 @@ public class ClientServiceImpl implements ClientService {
 		List<CampaignDetail> campaignDetailList = new ArrayList<CampaignDetail>();
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+		headers.setBasicAuth(Constants.USER, Constants.PASSWORD);
 
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(Constants.CAMPAIGN_URL)
 		        .queryParam(Constants.CLIENT_NAME, clientName);

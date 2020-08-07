@@ -1,5 +1,7 @@
 package com.client.controller;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,16 +22,19 @@ public class Controller {
 	ClientService clientService;
 
 	@PostMapping
+	@RolesAllowed({"ADMIN","USER"})
 	public Response addClient(@RequestBody PostRequest client) {
 	    return clientService.addClient(client);
 	}   
 	
 	@PutMapping
+	@RolesAllowed({"ADMIN","USER"})
 	public Response updateClient(@RequestBody PostRequest client) {
 	    return clientService.updateClient(client);
 	}   
 	
 	@GetMapping
+	@RolesAllowed({"ADMIN","USER"})
 	public Object getClientDetail(@RequestParam("clientName") String clientName) {
 	    return clientService.getClientDetail(clientName);
 	}
